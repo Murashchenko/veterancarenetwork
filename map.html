@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Veteran care network</title>
+  <link rel="stylesheet" href="style/normalize.css">
+  <link rel="stylesheet" href="style/common.css">
+  <link rel="stylesheet" href="style/map.css">
+</head>
+<body>
+  <header class="header">
+    <h1 class="header__caption">veteran care network</h1>
+  </header>
+  <div id="map">
+    <!-- <nav class="map-menu">
+      <button class="map-menu__location"></button>
+      <button class="map-menu__seach"></button>
+      <button class="map-menu__markers" onclick="toggleMarkerControl()"></button>
+      <button class="map-menu__how-to-use"></button>
+    </nav> -->
+  </div>
+  <footer class="footer">
+    <ul class="footer-menu">
+      <li class="footer-menu__item">
+        <a href="index.html" class="footer-menu__link _home">home</a>
+      <li class="footer-menu__item">
+        <a href="map.html" class="footer-menu__link _map _active">map</a>
+      <li class="footer-menu__item">
+        <a href="about.html" class="footer-menu__link _about">about</a>
+      <li class="footer-menu__item">
+        <a href="contact.html" class="footer-menu__link _contact">contact</a>
+    </ul>
+  </footer>
+  <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCQohQLBsozwfyDyI38e_1LBfRTQwWU4I8&callback=initMap">
+  </script>
+  <script src="js/map.js"></script>
+</body>
+</html>

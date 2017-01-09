@@ -1,0 +1,61 @@
+@import "mixins.less";
+
+.main {
+  padding-top: 4em;
+
+  background: url('../img/star_black.png') 50% 1.5em no-repeat;
+  background-size: 7em;
+}
+
+.contact-list {
+  list-style: none;
+  margin: 0;
+  padding: 0 8%;
+
+  &__item {
+    margin: 0 0 1em;
+  }
+
+  &__e-mail {
+    text-decoration: none;
+    color: #941f1f;
+    font-weight: bold;
+    &:hover {
+      border-bottom: 2px dashed;
+    }
+  }
+
+  &__item._phone-number {
+    font-weight: bold;
+  }
+
+  &__item._address {
+    color: #929395;
+    line-height: 1.5em;
+    h2 {
+      margin: 0;
+      .text-transform(uppercase);
+      font-size: 1.1em;
+      color: #000000;
+    }
+  }
+
+}
+
+.middle {
+  vertical-align: middle;
+}
+
+.smaller {
+  font-size: 0.8em;
+}
+
+.bigger {
+  font-size: 1.2em;
+}
+
+@media (min-width: 480px) {
+  .contact-list {
+    text-align: center;
+  }
+}

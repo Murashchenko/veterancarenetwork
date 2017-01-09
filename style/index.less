@@ -1,0 +1,24 @@
+@import "mixins.less";
+
+.main {
+  padding-top: 35.5%;
+
+  background: url('../img/flag(1).png') 50% -26.6vw no-repeat,
+              url('../img/star_black.png') 50% 27vw no-repeat;
+  background-size: 150% auto, 7em;
+
+  &__caption {
+    .text-transform(uppercase);
+    text-align: center;
+    font-size: 1.1em;
+    margin-bottom: 1em;
+  }
+
+  &__content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 8%;
+    text-align: justify;
+    font-size: 1.1em;
+  }
+}

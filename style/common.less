@@ -1,0 +1,103 @@
+@import "mixins.less";
+@blue: #11167b;
+@footer-height: 4em;
+
+body {
+  font-size: 5vw;
+  padding-bottom: @footer-height + 1;
+}
+
+.header {
+  background: @blue;
+  padding: 0.7em 0.3em;
+
+  &__caption{
+    margin: 0;
+    .text-transform(uppercase);
+    color: #ffffff;
+    font-size: 1.35em;
+    text-align: center;
+  }
+}
+
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+
+  width: 100%;
+  height: @footer-height;
+  background: @blue;
+}
+
+.footer-menu {
+  list-style: none;
+  padding: 0;
+  margin: 0 auto;
+  max-width: 1200px;
+
+  &__item {
+    display: inline-block;
+    width: 25%;
+    height: @footer-height;
+  }
+
+  &__link {
+    display: block;
+    width: 100%;
+    height: @footer-height;
+
+    text-indent: -100000px;
+    background: url('../img/home(1).png') 50% 50% no-repeat,
+                url('../img/home(2).png') 50% -1000px no-repeat;
+    background-size: contain;
+
+    &:hover {
+      background-position: 50% -1000px, 50% 50%;
+    }
+
+    &._home._active {
+        background: url('../img/home(3).png') 50% 50% no-repeat;
+        background-size: contain;
+    }
+
+    &._map {
+      background-image: url('../img/blue_map(1).png'),
+                        url('../img/blue_map(2).png');
+      &._active {
+        background: url('../img/blue_map(3).png') 50% 50% no-repeat;
+        background-size: contain;
+      }
+    }
+
+    &._about {
+      background-image: url('../img/about(1).png'),
+                        url('../img/about(2).png');
+      &._active {
+        background: url('../img/about(3).png') 50% 50% no-repeat;
+        background-size: contain;
+      }
+    }
+
+    &._contact {
+      background-image: url('../img/contact(1).png'),
+                        url('../img/contact(2).png');
+      &._active {
+        background: url('../img/contact(3).png') 50% 50% no-repeat;
+        background-size: contain;
+      }
+    }
+  }
+}
+
+@media (min-width: 480px) and (max-width: 1024px) {
+  body {
+    font-size: 24px;
+  }
+}
+
+@media (min-width: 1024px) {
+  body {
+    font-size: 30px;
+  }
+}
