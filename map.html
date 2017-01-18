@@ -13,14 +13,41 @@
   <header class="header">
     <h1 class="header__caption">veteran care network</h1>
   </header>
-  <div id="map">
-    <!-- <nav class="map-menu">
-      <button class="map-menu__location"></button>
-      <button class="map-menu__seach"></button>
-      <button class="map-menu__markers" onclick="toggleMarkerControl()"></button>
-      <button class="map-menu__how-to-use"></button>
-    </nav> -->
-  </div>
+  <main class="main">
+    <nav class="map-menu clearfix">
+      <div class="map-menu__wrapper">
+        <button class="map-menu__item _location">location</button>
+        <button class="map-menu__item _seach">seach</button>
+        <button class="map-menu__item _markers">marker control menu</button>
+        <button class="map-menu__item _help">help</button>
+      </div>
+    </nav>
+    <nav class="mc-menu">
+      <div class="mc-menu__mode clearfix">
+        <button class="mc-menu__mode-btn _active">Layers</button>
+        <button class="mc-menu__mode-btn">Legend</button>
+      </div>
+      <ul class="mc-menu__list">
+        <li class="mc-menu__item">
+          <button class="mc-menu__btn _active" data-type="medicare"></button>
+          VA Clinics
+        <li class="mc-menu__item">
+          <button class="mc-menu__btn _active" data-type="hospital"></button>
+          VA Hospitals
+        <li class="mc-menu__item">
+          <button class="mc-menu__btn _active" data-type="tricare"></button>
+          Tricare Civilian Locations
+        <li class="mc-menu__item">
+          <button class="mc-menu__btn _active" data-type="nongov"></button>
+          Health-Care Facilities Non-Governmental
+        <li class="mc-menu__item">
+          <button class="mc-menu__btn _active" data-type="therapy"></button>
+          Psychiatric Hospitals
+      </ul>
+    </nav>
+    <div id="map">
+    </div>
+  </main>
   <footer class="footer">
     <ul class="footer-menu">
       <li class="footer-menu__item">
@@ -36,6 +63,6 @@
   <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCQohQLBsozwfyDyI38e_1LBfRTQwWU4I8&callback=initMap">
   </script>
-  <script src="js/map.js"></script>
+  <script defer src="js/map.js"></script>
 </body>
 </html>

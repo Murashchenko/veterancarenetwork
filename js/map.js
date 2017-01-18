@@ -1,5 +1,7 @@
-var markersHospital = [];
-var hospitalsPos = [{
+var markers = {};
+var pos = {};
+
+pos.hospital = [{
   lat: 49.582566,
   lng: 34.551238
 },{
@@ -16,8 +18,7 @@ var hospitalsPos = [{
   lng: 34.530874
 }];
 
-var markersMedicare = [];
-var medicarePos = [{
+pos.medicare = [{
   lat: 49.610315,
   lng: 34.523292
 },{
@@ -34,8 +35,7 @@ var medicarePos = [{
   lng: 34.557509
 }];
 
-var markersNongov = [];
-var nongovPos = [{
+pos.nongov = [{
   lat: 49.597663,
   lng: 34.602393
 },{
@@ -52,8 +52,7 @@ var nongovPos = [{
   lng: 34.516047
 }];
 
-var markersTricare = [];
-var tricarePos = [{
+pos.tricare = [{
   lat: 49.593744,
   lng: 34.500795
 },{
@@ -70,8 +69,7 @@ var tricarePos = [{
   lng: 34.573253
 }];
 
-var markersTherapy = [];
-var therapyPos = [{
+pos.therapy = [{
   lat: 49.585856,
   lng: 34.566511
 },{
@@ -84,9 +82,64 @@ var therapyPos = [{
   lat: 49.598527,
   lng: 34.528410
 },{
-  lat: 49.599258, 
+  lat: 49.599258,
   lng: 34.537274
 }];
+
+var controlMenuButton = document.querySelector('.map-menu__item._markers');
+var markerControlMenu = document.querySelector('.mc-menu');
+
+controlMenuButton.addEventListener('click', function () {
+  shiftLastClass(markerControlMenu, '_active');
+});
+
+var modButtons = document.querySelectorAll('.mc-menu__mode-btn');
+var markerControlMenuList = document.querySelector('.mc-menu__list');
+
+for (var i = 0; i < modButtons.length; i++) {
+
+  modButtons[i].addEventListener('click', function () {
+    if (this != document.querySelector('.mc-menu__mode-btn._active')) {
+
+      shiftLastClass(markerControlMenuList, '_legendMode');
+      for (var i = 0; i < modButtons.length; i++) {
+        shiftLastClass(modButtons[i], '_active');
+      }
+
+    }
+  });
+}
+
+var markerControlMenuButtons = document.querySelectorAll('.mc-menu__btn');
+
+for (var i = 0; i < markerControlMenuButtons.length; i++) {
+  markerControlMenuButtons[i].addEventListener('click', function () {
+    shiftLastClass(this, '_active');
+
+    var establishmentType = this.dataset.type;
+
+    if (this.className == 'mc-menu__btn _active') {
+      var mapValue = map;
+    } else {
+      mapValue = null;
+    }
+
+    for (var i = 0; i < markers[establishmentType].length; i++) {
+      markers[establishmentType][i].setMap(mapValue);
+    }
+  });
+}
+
+function shiftLastClass(element, lastClass) {
+  var classes = element.className.split(' ');
+  if (classes[classes.length - 1] != lastClass) {
+    classes.push(lastClass);
+    element.className = classes.join(' ');
+    return;
+  }
+  classes = classes.slice(0, -1);
+  element.className = classes.join(' ');
+}
 
 function initMap() {
   var uluru = {lat:  49.589593, lng: 34.550857};
@@ -95,61 +148,21 @@ function initMap() {
           center: uluru,
           disableDefaultUI: true
         });
+        window.map = map;
 
-        for (var i = 0; i < 5; i++) {
-          var marker = new google.maps.Marker({
-            position: hospitalsPos[i],
-            map: map,
-            type: "hospital",
-            icon: "img/hospital.png"
-          });
-          markersHospital.push(marker);
-        }
+        for (var establishmentType in pos) {
+          markers[establishmentType] = [];
 
-        for (var i = 0; i < 5; i++) {
-          var marker = new google.maps.Marker({
-            position: medicarePos[i],
-            map: map,
-            type: "medicare",
-            icon: "img/medicare.png"
-          });
-          markersMedicare.push(marker);
-        }
+          for (var i = 0; i < pos[establishmentType].length; i++) {
 
-        for (var i = 0; i < 5; i++) {
-          var marker = new google.maps.Marker({
-            position: nongovPos[i],
-            map: map,
-            type: "nongov",
-            icon: "img/nongov.png"
-          });
-          markersNongov.push(marker);
-        }
+            var marker = new google.maps.Marker({
+              position: pos[establishmentType][i],
+              map: map,
+              type: establishmentType,
+              icon: "img/" + establishmentType + ".png"
+            });
 
-        for (var i = 0; i < 5; i++) {
-          var marker = new google.maps.Marker({
-            position: tricarePos[i],
-            map: map,
-            type: "tricare",
-            icon: "img/tricare.png"
-          });
-          markersTricare.push(marker);
-        }
-
-        for (var i = 0; i < 5; i++) {
-          var marker = new google.maps.Marker({
-            position: therapyPos[i],
-            map: map,
-            type: "therapy",
-            icon: "img/therapy.png"
-          });
-          markersTherapy.push(marker);
+            markers[establishmentType].push(marker);
+          }
         }
 }
-
-// function toggleMarkers() {
-//   for (var i = 0; i < markersArr.length; i++) {
-//     console.log(markersArr[i].type);
-//     markersArr[i].setMap(null);
-//   }
-// }
